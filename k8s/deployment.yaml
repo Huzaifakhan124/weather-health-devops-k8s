@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-health-app
+  namespace: weather-space
+  labels:
+    app: weather-health-app
+spec:
+  replicas: 2 # 2 pods 
+  selector:
+    matchLabels:
+      app: weather-health-app
+  template:
+    metadata:
+      labels:
+        app: weather-health-app
+    spec:
+      containers:
+      - name: web
+        image: huziafakhan/weather-health-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
