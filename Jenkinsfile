@@ -17,7 +17,6 @@ pipeline {
             steps {
                 script {
                     echo 'Building Docker image...'
-                    // path
                     sh "docker build -t ${DOCKER_IMAGE}:${TAG} ./src"
                 }
             }
@@ -60,3 +59,14 @@ pipeline {
                 }
             }
         }
+    }
+
+    post {
+        success {
+            echo 'Pipeline successfully complete !'
+        }
+        failure {
+            echo 'error in the pipeline.'
+        }
+    }
+}
