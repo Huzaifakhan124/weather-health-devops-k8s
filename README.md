@@ -1,8 +1,6 @@
-# Weather & Health DevOps Project 🌦️💪
 
-A production-ready DevOps and GitOps pipeline implementing automated CI/CD, container orchestration, live health monitoring, and metrics scraping for a Weather & Health web application.
 
-# Weather & Health DevOps Project 🌦️💪
+# Weather & Health Web App - GitOps & DevOps Pipeline on Kubernetes (Kind) 🌦️💪
 
 A production-ready DevOps and GitOps pipeline implementing automated CI/CD, local Kubernetes orchestration via **Kind**, live health monitoring, and metrics scraping for a Weather & Health web application.
 
@@ -72,6 +70,7 @@ Clone the repository:
 
 Bash
 git clone [https://github.com/Huzaifakhan124/weather-health-devops-k8s.git](https://github.com/Huzaifakhan124/weather-health-devops-k8s.git)
+
 cd weather-health-devops-project
 Run Jenkins Pipeline:
 Trigger the Jenkins job (weather-health-pipeline-new) to build the Docker image and push it to Docker Hub.
@@ -88,4 +87,6 @@ Check your running pods and monitoring targets to ensure the web app and metrics
 
 Bash
 kubectl get pods -n weather-space
+
+THANKU FOR VISITING
 
