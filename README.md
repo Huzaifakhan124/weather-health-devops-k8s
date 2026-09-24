@@ -46,6 +46,7 @@ Web Server & Metrics: Nginx (Serves static app + exposes /metrics)
 Monitoring & Observability: Prometheus & Grafana
 
 📁 Project Structure
+
 weather-health-devops-project/
 ├── argocd/
 │   └── app-deployment.yaml      # ArgoCD application manifest
