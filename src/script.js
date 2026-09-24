@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // For active status 
     setTimeout(() => {
-        statusEl.innerText = "System Status: Managed via K8s & ArgoCD 🚀";
+        statusEl.innerText = "System Status: Managed via K8s & ArgoCD healthy🚀";
     }, 3000);
 });
