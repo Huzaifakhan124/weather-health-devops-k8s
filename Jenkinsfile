@@ -44,6 +44,11 @@ pipeline {
                             git config --global user.email "jenkins@example.com"
                             git config --global user.name "Jenkins CI"
                             
+                            # Fetch and checkout main branch explicitly to avoid detached HEAD
+                            git remote set-url origin https://github.com/Huzaifakhan124/weather-health-devops-k8s.git
+                            git fetch origin main
+                            git checkout main || git checkout -b main
+                            
                             # Force deployment.yaml to update so ArgoCD triggers sync
                             sed -i "s|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${TAG}|g" k8s/deployment.yaml
                             
@@ -55,14 +60,3 @@ pipeline {
                 }
             }
         }
-    }
-
-    post {
-        success {
-            echo 'Pipeline successfully complete !'
-        }
-        failure {
-            echo 'error in the pipeline.'
-        }
-    }
-}
