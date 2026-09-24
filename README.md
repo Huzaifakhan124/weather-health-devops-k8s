@@ -45,6 +45,7 @@ Web Server & Metrics: Nginx (Serves static app + exposes /metrics)
 
 Monitoring & Observability: Prometheus & Grafana
 
+```
 📁 Project Structure
 
 weather-health-devops-project/
@@ -63,6 +64,8 @@ weather-health-devops-project/
 │   └── style.css                # Styling sheets
 ├── Jenkinsfile                  # Automated CI/CD pipeline script
 └── README.md                    # Project Documentation
+
+```
 
 🛠️ How to Use & Deploy
 Clone the repository:
