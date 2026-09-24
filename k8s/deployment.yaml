@@ -1,12 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-nginx-config
+  namespace: weather-space
+data:
+  default.conf: |
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+        }
+
+        location /metrics {
+            default_type text/plain;
+            return 200 "# HELP weather_app_up Status of the weather health application\n# TYPE weather_app_up gauge\nweather_app_up 1\n";
+        }
+    }
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weather-health-app
   namespace: weather-space
-  labels:
-    app: weather-health-app
 spec:
-  replicas: 2 # 2 pods 
+  replicas: 2
   selector:
     matchLabels:
       app: weather-health-app
@@ -16,15 +36,14 @@ spec:
         app: weather-health-app
     spec:
       containers:
-      - name: web
-        image: huziafakhan/weather-health-app:27
-        imagePullPolicy: Always
+      - name: weather-health
+        image: huziafakhan/weather-health-app:latest
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            cpu: "100m"
-            memory: "128Mi"
-          requests:
-            cpu: "50m"
-            memory: "64Mi"
+        volumeMounts:
+        - name: nginx-config-vol
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config-vol
+        configMap:
+          name: app-nginx-config
