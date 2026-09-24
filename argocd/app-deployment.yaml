@@ -4,7 +4,7 @@ metadata:
   name: weather-health-app
   namespace: argocd
 spec:
-  project: new-one
+  project: default
   source:
     repoURL: 'https://github.com/Huzaifakhan124/weather-health-devops-k8s.git'
     targetRevision: HEAD
