@@ -44,7 +44,7 @@ pipeline {
                             git config --global user.email "jenkins@example.com"
                             git config --global user.name "Jenkins CI"
                             
-                            // Force deployment.yaml to update so ArgoCD triggers sync
+                            # Force deployment.yaml to update so ArgoCD triggers sync
                             sed -i "s|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${TAG}|g" k8s/deployment.yaml
                             
                             git add k8s/deployment.yaml
