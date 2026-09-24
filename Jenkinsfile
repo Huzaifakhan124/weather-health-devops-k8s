@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-       stage('Update K8s Manifests') {
+        stage('Update K8s Manifests') {
             steps {
                 script {
                     echo 'Updating Kubernetes deployment manifest in GitHub...'
@@ -60,3 +60,14 @@ pipeline {
                 }
             }
         }
+    }
+
+    post {
+        success {
+            echo 'Pipeline successfully complete !'
+        }
+        failure {
+            echo 'error in the pipeline.'
+        }
+    }
+}
