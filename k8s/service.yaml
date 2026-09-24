@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: weather-health-service
   namespace: weather-space
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
 spec:
   type: NodePort
   selector:
