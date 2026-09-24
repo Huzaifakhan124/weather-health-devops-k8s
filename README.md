@@ -2,23 +2,25 @@
 
 A production-ready DevOps and GitOps pipeline implementing automated CI/CD, container orchestration, live health monitoring, and metrics scraping for a Weather & Health web application.
 
+# Weather & Health DevOps Project 🌦️💪
+
+A production-ready DevOps and GitOps pipeline implementing automated CI/CD, local Kubernetes orchestration via **Kind**, live health monitoring, and metrics scraping for a Weather & Health web application.
+
 ---
 
 ## 🏗️ Architecture & Minimal Workflow Diagram
 
 ```mermaid
 graph TD
-    %% Styling
     classDef git fill:#f9f,stroke:#333,stroke-width:2px;
     classDef cicd fill:#ff9,stroke:#333,stroke-width:2px;
     classDef k8s fill:#9f9,stroke:#333,stroke-width:2px;
     classDef monitor fill:#99f,stroke:#333,stroke-width:2px;
 
-    %% Workflow Nodes
     A[GitHub Repo] -->|Webhook / Push| B[Jenkins CI/CD]:::cicd
     B -->|Build & Push Image| C[Docker Hub]:::git
     C -->|Pull / GitOps| D[ArgoCD]:::cicd
-    D -->|Deploy Pods| E[Kubernetes Cluster]:::k8s
+    D -->|Deploy Resources| E[Kind Local Cluster]:::k8s
     
     subgraph Kubernetes Namespace: weather-space
         E --> F[Nginx Web App & /metrics]:::k8s
@@ -27,8 +29,8 @@ graph TD
     F -->|Scrape Metrics| G[Prometheus]:::monitor
     G -->|Visualize| H[Grafana Dashboard]:::monitor
 
-    %% Apply Styles
     class A,C git;
+```
 
     🚀 Tech Stack Used
 Version Control: Git & GitHub
