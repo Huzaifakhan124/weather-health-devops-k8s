@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: huziafakhan/weather-health-app:25
+        image: huziafakhan/weather-health-app:26
         imagePullPolicy: Always
         ports:
         - containerPort: 80
