@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: weather-health
-        image: huziafakhan/weather-health-app:latest
+        image: huziafakhan/weather-health-app:28
         ports:
         - containerPort: 80
         volumeMounts:
